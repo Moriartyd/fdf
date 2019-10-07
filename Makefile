@@ -6,11 +6,13 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 16:09:49 by cpollich          #+#    #+#              #
-#    Updated: 2019/10/07 18:37:03 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/08 00:27:57 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
+
+F = -Wall -Wextra -Werror
 
 INC_DIR	=	./inc/
 SRC_DIR	=	./src/
@@ -30,13 +32,13 @@ LIBRARIES	=	-lmlx -lm -lft -L$(LIBFT_DIR) -L$(MLX_DIR) -framework OpenGL -framew
 INCLUDES	=	-I$(LIBFT_HEAD) -I$(MLX_HEAD) -I$(INC_DIR)
 
 test: $(MLX) $(LIBFT) $(OBJ_DIR) $(OBJS)
-	gcc -g $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME)
+	gcc -g $F $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	gcc -c -g $< $(INCLUDES) -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES)
+	gcc -c -g $F $< $(INCLUDES) -o $@
 
 $(MLX):
 	@make -C $(MLX_DIR)
@@ -45,10 +47,10 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 clean:
-	@make -C $(LIBFT_DIR) clean
-	@make -C $(MLX_DIR) clean
+	@#make -C $(LIBFT_DIR) clean
+	@#make -C $(MLX_DIR) clean
 	@rm -Rf $(OBJ_DIR)
 
 fclean: clean
-	@make -C $(LIBFT_DIR) fclean
+	@#make -C $(LIBFT_DIR) fclean
 	@rm -f $(NAME)

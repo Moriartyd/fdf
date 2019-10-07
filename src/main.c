@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:03 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/07 18:39:44 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/08 00:01:34 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 #include "key_map.h"
 #include "colors.h"
 #include "errors.h"
-
-int	close_pls(int key, void *param)
-{
-	if (key == K_ESC)
-		exit(0);
-	return (0);
-}
 
 int	get_rows(char **av)
 {
@@ -31,7 +24,7 @@ int	get_rows(char **av)
 
 	rows = 0;
 	if ((fd = open(av[1], O_RDONLY)) < 0)
-		error(E_MAP_READ);
+		error(E_MAP);
 	while ((res = ft_gnl(fd, &line)) == 1)
 	{
 		rows++;
@@ -54,9 +47,7 @@ void	print_c(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			ft_printf("%2d", map->coords[i][j].z);
-			if (j + 1 != map->width)
-				ft_putstr(" ");
+			ft_printf("%5d", map->coords[i][j].z);
 			j++;
 		}
 		ft_putstr("\n");
@@ -70,6 +61,7 @@ int	main(int ac, char **av)
 	t_map		*map;
 	t_fdf		*fdf;
 
+	errno = 0;
 	if (ac == 2)
 	{
 		map = init_map();
@@ -79,8 +71,8 @@ int	main(int ac, char **av)
 		if (parse_input(fd, map) == -1)
 			error(E_MAP_READ);
 		fdf = init_fdf(map);
-		print_c(fdf->map);
-		// mlx_loop(fdf->mlx);
+		mlx_loop(fdf->mlx);
 	}
+	error(E_USAGE);
 	return (0);
 }

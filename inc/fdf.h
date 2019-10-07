@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/07 18:24:24 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/08 00:11:25 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 typedef struct	s_point
 {
-	int			x;
-	int			y;
 	int			z;
 	int			color;
 }				t_point;

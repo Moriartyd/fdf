@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/07 18:23:57 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/07 23:48:49 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_coords	*new_row(char **line, t_map *map)
 	if (!w)
 		while (line[w])
 			w++;
-	if (!w || !(res = (t_coords *)malloc(sizeof(t_coords) * w)))
+	if (!(res = (t_coords *)malloc(sizeof(t_coords) * w)) || !w)
 		error(E_MALLOC);
 	return (res);
 }
@@ -52,14 +52,14 @@ int			parse_input(int fd, t_map *map)
 {
 	char	*line;
 	int		res;
-	char	*coords_line;
+	char	**coords_line;
 	int		i;
 
 	i = -1;
 	while ((res = ft_gnl(fd, &line)) == 1)
 	{
 		if (!(coords_line = ft_strsplit(line, ' ')))
-			error(E_MALLOC);
+			error(E_MAP_READ);
 		parse_line(coords_line, map, ++i);
 		ft_doublestrdel(&coords_line);
 		ft_strdel(&line);

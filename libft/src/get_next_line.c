@@ -6,12 +6,11 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 11:19:21 by moriarty          #+#    #+#             */
-/*   Updated: 2019/09/23 16:55:50 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/07 23:42:29 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <errno.h>
 #include <stdio.h>
 
 /*
