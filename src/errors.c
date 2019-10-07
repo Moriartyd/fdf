@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_map.h                                          :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 16:10:11 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/07 16:10:11 by cpollich         ###   ########.fr       */
+/*   Created: 2019/10/07 16:09:59 by cpollich          #+#    #+#             */
+/*   Updated: 2019/10/07 18:45:38 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_MAP_H
-# define KEY_MAP_H
+#include "fdf.h"
 
-# define K_ESC 53
-
-#endif
+void    error(char *str)
+{
+    if (errno == 0)
+        ft_putstr_fd(str, 2);
+    else
+        perror("fdf");
+    exit(1);
+}
