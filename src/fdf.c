@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 17:07:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/07 18:38:27 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/08 20:40:02 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_fdf		*init_fdf(t_map *map)
 	if (!(res = (t_fdf *)malloc(sizeof(t_fdf))))
 		error(E_MALLOC);
 	res->map = map;
-	res->mlx = NULL;
-	res->win = NULL;
+	res->mlx = mlx_init();;
+	res->win = mlx_new_window(res->mlx, 1280, 720, "fdf");
 	return (res);
 }
 
