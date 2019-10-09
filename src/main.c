@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:03 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 23:03:30 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/09 23:39:35 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	print_c(t_map *map)
 	int	j;
 
 	i = 0;
+	ft_putstr("\n");
 	while (i < map->height)
 	{
 		j = 0;
@@ -75,6 +76,7 @@ int	main(int ac, char **av)
 		draw(fdf);
 		mlx_loop(fdf->mlx);
 	}
-	error(E_USAGE);
+	else
+		error(E_USAGE);
 	return (0);
 }

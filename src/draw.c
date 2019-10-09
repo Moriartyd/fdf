@@ -6,22 +6,21 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 21:17:24 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 23:24:40 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/09 23:39:16 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void		iso(double *x, double *y, double *z)
+static void		iso(t_coords *s, t_coords *c)
 {
-	int	prev_x;
-	int	prev_y;
+	int		prev_x;
+	int		prev_y;
 
-	prev_x = *x;
-	prev_y = *y;
-
-	*x = (prev_x - prev_y) * cos(0.523599);
-	*y = -*z + (prev_x + prev_y) * sin(0.523599);
+	prev_x = s->x;
+	prev_y = s->y;
+	s->x = (prev_x - prev_y) * cos(0.523599);
+	s->y = -(s->z) + (prev_x + prev_y) * sin(0.523599);
 }
 
 void		for_each(t_map *len
@@ -74,9 +73,10 @@ void	set_coords_in_screen(t_coords *s, t_coords *c)
 
 void	draw(t_fdf *fdf)
 {
+	// draw_pic(fdf);
+	for_each(fdf->map, iso);
+	print_c(fdf->map);
 	for_each(fdf->map, set_coords_in_screen);
-	draw_pic(fdf);
-	for_each(fdf->map, multi);
-	for_each(fdf->map, set_coords_in_screen);
+	print_c(fdf->map);
 	draw_pic(fdf);
 }

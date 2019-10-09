@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 23:21:12 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/09 23:48:03 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include "libft.h"
 # include <errno.h>
 # include <stdio.h>
+
+typedef struct	s_point
+{
+	int			x;
+	int			y;
+	int			z;
+}				t_point;
 
 typedef struct	s_coords
 {

@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 16:09:49 by cpollich          #+#    #+#              #
-#    Updated: 2019/10/08 21:40:39 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/09 23:51:14 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 clean:
-	@#make -C $(LIBFT_DIR) clean
+	@make -C $(LIBFT_DIR) clean
 	@make -C $(MLX_DIR) clean
 	@rm -Rf $(OBJ_DIR)
 
