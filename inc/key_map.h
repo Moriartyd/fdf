@@ -6,13 +6,15 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:11 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/08 21:05:57 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/09 22:20:19 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEY_MAP_H
 # define KEY_MAP_H
 
-# define K_ESC 53
+# define K_ESC		53
+# define K_PLUS		69
+# define K_MINUS	78
 
 #endif

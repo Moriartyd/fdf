@@ -6,13 +6,26 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 21:17:24 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/08 22:08:38 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/09 23:24:40 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	set_coords_by_center(t_coords **map, t_map *len, double a)
+static void		iso(double *x, double *y, double *z)
+{
+	int	prev_x;
+	int	prev_y;
+
+	prev_x = *x;
+	prev_y = *y;
+
+	*x = (prev_x - prev_y) * cos(0.523599);
+	*y = -*z + (prev_x + prev_y) * sin(0.523599);
+}
+
+void		for_each(t_map *len
+				, void (*f)(t_coords *s, t_coords *c))
 {
 	int	i;
 	int	j;
@@ -22,20 +35,17 @@ static void	set_coords_by_center(t_coords **map, t_map *len, double a)
 	{
 		j = -1;
 		while (++j < len->width)
-		{
-			map[i][j].x = 640 / 2 + j * a;
-			map[i][j].y = 360 / 2 + i * a;
-		}
+			(*f)(&len->s_c[i][j], &len->c_c[i][j]);
 	}
 }
 
-static void	draw_sharp(t_fdf *fdf)
+static void	draw_pic(t_fdf *fdf)
 {
 	int			i;
 	int			j;
 	t_coords	**arr;
 
-	arr = fdf->map->coords;
+	arr = fdf->map->c_c;
 	i = -1;
 	while (++i < fdf->map->height)
 	{
@@ -50,12 +60,23 @@ static void	draw_sharp(t_fdf *fdf)
 	}
 }
 
+void	multi(t_coords *s, t_coords *c)
+{
+	s->x = s->x * 1.1;
+	s->y = s->y * 1.1;
+}
+
+void	set_coords_in_screen(t_coords *s, t_coords *c)
+{
+	c->x = 640 - s->x;
+	c->y = 320 - s->y;
+}
+
 void	draw(t_fdf *fdf)
 {
-	double	a;
-
-	a = fdf->map->height > fdf->map->width ? fdf->map->height : fdf->map->width;
-	a = 360 / a;
-	set_coords_by_center(fdf->map->coords, fdf->map, a);
-	draw_sharp(fdf);
+	for_each(fdf->map, set_coords_in_screen);
+	draw_pic(fdf);
+	for_each(fdf->map, multi);
+	for_each(fdf->map, set_coords_in_screen);
+	draw_pic(fdf);
 }

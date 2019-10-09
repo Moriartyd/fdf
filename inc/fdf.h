@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/08 21:37:56 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/09 23:21:12 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@
 # include <errno.h>
 # include <stdio.h>
 
-// typedef struct	s_point
-// {
-// 	int			x;
-// 	int			y;
-// 	int			color;
-// }				t_point;
-
 typedef struct	s_coords
 {
 	double		x;
@@ -36,7 +29,8 @@ typedef struct	s_coords
 
 typedef struct	s_map
 {
-	t_coords	**coords;
+	t_coords	**s_c;
+	t_coords	**c_c;
 	int			width;
 	int			height;
 }				t_map;
@@ -45,6 +39,7 @@ typedef struct	s_fdf
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
 	t_map		*map;
 }				t_fdf;
 
@@ -54,7 +49,7 @@ typedef struct	s_fdf
 
 t_map			*init_map();
 t_fdf			*init_fdf(t_map *map);
-t_coords		**coords_init(t_map *map);
+void			coords_init(t_map *map);
 
 void			draw_line(t_coords s, t_coords f, t_fdf *fdf);
 void			draw(t_fdf *fdf);

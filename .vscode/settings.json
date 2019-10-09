@@ -2,6 +2,8 @@
     "files.associations": {
         "mlx_int.h": "c",
         "mlx.h": "c",
-        "fdf.h": "c"
+        "fdf.h": "c",
+        "colors.h": "c",
+        "key_map.h": "c"
     }
 }
