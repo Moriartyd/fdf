@@ -6,13 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 21:17:24 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 22:40:39 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 02:48:19 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	iso(t_coords *s, t_coords *c, t_coords *i)
+void	iso(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 {
 	int	prev_x;
 	int	prev_y;
@@ -24,7 +24,7 @@ void	iso(t_coords *s, t_coords *c, t_coords *i)
 }
 
 void	for_each(t_map *len
-				, void (*f)(t_coords *s, t_coords *c, t_coords *i))
+				, void (*f)(t_coords *s, t_coords *c, t_coords *i, t_map *map))
 {
 	int	i;
 	int	j;
@@ -34,7 +34,8 @@ void	for_each(t_map *len
 	{
 		j = -1;
 		while (++j < len->width)
-			(*f)(&len->s_c[i][j], &len->c_c[i][j], &len->iso_c[i][j]);
+			(*f)(&len->s_c[i][j], &len->c_c[i][j]
+				, &len->iso_c[i][j], len);
 	}
 }
 
@@ -60,16 +61,16 @@ void	draw_pic(t_fdf *fdf)
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 }
 
-void	set_coords_in_screen_by_iso(t_coords *s, t_coords *c, t_coords *i)
+void	set_coords_in_screen_by_iso(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 {
-	c->x = WIDTH / 2 - i->x;
-	c->y = HEIGHT / 2 - i->y;
+	c->x = (WIDTH / 2 - i->x) + map->lr;
+	c->y = (HEIGHT / 2 - i->y) + map->updown;
 }
 
-void	set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i)
+void	set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 {
-	c->x = WIDTH / 2 - s->x;
-	c->y = HEIGHT / 2 - s->y;
+	c->x = (WIDTH / 2 - s->x) + map->lr;
+	c->y = (HEIGHT / 2 - s->y) + map->updown;
 }
 
 void	draw(t_fdf *fdf)

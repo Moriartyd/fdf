@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 16:09:49 by cpollich          #+#    #+#              #
-#    Updated: 2019/10/10 21:29:48 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/11 02:09:53 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ F = -Wall -Wextra -Werror
 INC_DIR	=	./inc/
 SRC_DIR	=	./src/
 SRC_LST	=	draw_line.c errors.c fdf.c parse_input.c main.c	\
-			hook_init.c draw.c zoom.c
+			hook_init.c draw.c zoom.c z_control.c arrows_control.c
 OBJ_DIR	=	./obj/
 OBJS	=	$(addprefix $(OBJ_DIR),$(SRC_LST:%.c=%.o))
 

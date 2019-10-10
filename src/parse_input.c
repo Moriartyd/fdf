@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 01:06:22 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 02:37:38 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,15 @@ static void		parse_line(char **line, t_map *map, int y)
 	map->s_c[y] = new_row(line, map);
 	map->c_c[y] = new_row(line, map);
 	map->iso_c[y] = new_row(line, map);
+	// map->buf_c[y] = new_row(line, map);
 	while (line[++i])
 	{
 		map->s_c[y][i].z = ft_atoi(line[i]);
-		map->c_c[y][i].z = map->s_c[y][i].z;
 		map->s_c[y][i].y = y;
-		map->c_c[y][i].y = y;
 		map->s_c[y][i].x = i;
-		map->c_c[y][i].x = i;
+		// map->buf_c[y][i].z = map->s_c[y][i].z;
+		// map->buf_c[y][i].y = y;
+		// map->buf_c[y][i].x = i;
 		if (!map->s_c[y][i].z && *line[i] != '0')
 			error(E_MAP);
 		width++;
@@ -99,6 +100,5 @@ int				parse_input(int fd, t_map *map)
 	else
 		a = WIDTH / (2 * a);
 	set_coords_by_center(map->s_c, map, a);
-	// print_c(map, map->s_c);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 00:55:33 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 02:46:11 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct	s_map
 	int			width;
 	int			height;
 	int			camera;
+	int			updown;
+	int			lr;
 }				t_map;
 
 typedef struct	s_fdf
@@ -77,12 +79,12 @@ int				parse_input(int fd, t_map *map);
 void			error(char *str);
 
 void			for_each(t_map *len
-					, void (*f)(t_coords *s, t_coords *c, t_coords *i));
-void			set_coords_in_screen_by_iso(t_coords *s, t_coords *c, t_coords *i);
-void			set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i);
+					, void (*f)(t_coords *s, t_coords *c, t_coords *i, t_map *map));
+void			set_coords_in_screen_by_iso(t_coords *s, t_coords *c, t_coords *i, t_map *map);
+void			set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i, t_map *map);
 void			zoom_in(t_fdf *fdf);
 void			zoom_out(t_fdf *fdf);
-void			iso(t_coords *s, t_coords *c , t_coords *i);
+void			iso(t_coords *s, t_coords *c , t_coords *i, t_map *map);
 
 /*
 **	KEYBOARD & MOUSE
@@ -92,7 +94,9 @@ void			hook_init(t_fdf *fdf);
 int				key_press(int key, void *param);
 int				close_fdf(void *param);
 
+void			arrow_control(t_fdf *fdf, int key);
+void			z_control(t_fdf *fdf, int key);
 
-void	print_c(t_map *map, t_coords **arr);
+void			print_c(t_map *map, t_coords **arr);
 
 #endif

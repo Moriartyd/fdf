@@ -6,17 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:48:12 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 22:41:47 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 02:50:39 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "key_map.h"
 #include "fdf.h"
 
-void	big_z(t_coords *s, t_coords *c, t_coords *i)
-{
-	s->z = s->z + 1;
-}
 
 int		key_press(int key, void *param)
 {
@@ -34,11 +30,10 @@ int		key_press(int key, void *param)
 		fdf->map->camera = CAM_ISO;
 	else if (key == K_P)
 		fdf->map->camera = CAM_CONIC;
-	else if (key == K_BOL)
-	{
-		for_each(fdf->map, big_z);
-		for_each(fdf->map, iso);
-	}
+	else if (key == K_BOL || key == K_MEN)
+		z_control(fdf, key);
+	else if (key >= K_ARROW_LEFT && key <= K_ARROW_RIGHT)
+		arrow_control(fdf, key);
 	draw(fdf);
 	return (0);
 }

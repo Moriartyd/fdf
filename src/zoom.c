@@ -6,20 +6,20 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:06:38 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 22:42:03 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 02:45:15 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	multi(t_coords *s, t_coords *c, t_coords *i)
+void	multi(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 {
 	s->x = s->x * 1.1;
 	s->y = s->y * 1.1;
 	s->z = s->z * 1.1;
 }
 
-void	unmulti(t_coords *s, t_coords *c, t_coords *i)
+void	unmulti(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 {
 	s->x = s->x / 1.1;
 	s->y = s->y / 1.1;
@@ -51,7 +51,7 @@ void	zoom_out(t_fdf *fdf)
 }
 
 /*
-**void	small_z(t_coords *s, t_coords *c, t_coords *i)
+**void	small_z(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 **{
 **	s->z = s->z / 1.5;
 **	i->z = i->z / 1.5;
