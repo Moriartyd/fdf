@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 17:07:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 20:04:48 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:41:37 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_fdf	*init_fdf(t_map *map)
 {
-	t_fdf   *res;
+	t_fdf	*res;
 
 	if (!(res = (t_fdf *)malloc(sizeof(t_fdf))))
 		error(E_INIT);
@@ -25,11 +25,12 @@ t_fdf	*init_fdf(t_map *map)
 		error(E_INIT);
 	if (!(res->img = mlx_new_image(res->mlx, WIDTH, HEIGHT)))
 		error(E_INIT);
-	res->data_addr = mlx_get_data_addr(res->img, &res->bpp, &res->size_line, &res->endian);
+	res->data_addr = mlx_get_data_addr(res->img, &res->bpp,
+				&res->size_line, &res->endian);
 	return (res);
 }
 
-t_map	*init_map()
+t_map	*init_map(void)
 {
 	t_map	*res;
 

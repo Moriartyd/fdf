@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:06 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 19:38:35 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:41:04 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static int	check_it(t_point sign, t_point cur, t_coords fin)
 		return (0);
 }
 
-void    	draw_line(t_coords s, t_coords f, t_fdf *fdf)
+void		draw_line(t_coords s, t_coords f, t_fdf *fdf)
 {
-	t_point	delta;
-	t_point	sign;
-	t_point	cur;
+	t_point		delta;
+	t_point		sign;
+	t_point		cur;
 	int			deltae;
 	int			error;
 

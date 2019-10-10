@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:03 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 21:13:17 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:42:19 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "colors.h"
 #include "errors.h"
 
-int	get_rows(char **av)
+int		get_rows(char **av)
 {
 	int		fd;
 	char	*line;
@@ -56,7 +56,7 @@ void	print_c(t_map *map, t_coords **arr)
 	}
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	int			fd;
 	t_map		*map;

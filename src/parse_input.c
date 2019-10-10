@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 19:58:31 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:42:57 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_coords	*new_row(char **line, t_map *map)
 	return (res);
 }
 
-static void	set_coords_by_center(t_coords **map, t_map *len, double a)
+static void		set_coords_by_center(t_coords **map, t_map *len, double a)
 {
 	int	i;
 	int	j;
@@ -42,14 +42,13 @@ static void	set_coords_by_center(t_coords **map, t_map *len, double a)
 		j = -1;
 		while (++j < len->width)
 		{
-			map[i][j].x = -(midj - j) * a;
-			map[i][j].y = -(midi - i) * a;
-			map[i][j].z *= a;
+			map[i][j].x = -(midj - j);
+			map[i][j].y = -(midi - i);
 		}
 	}
 }
 
-static void	parse_line(char **line, t_map *map, int y)
+static void		parse_line(char **line, t_map *map, int y)
 {
 	int	width;
 	int	i;
@@ -77,7 +76,7 @@ static void	parse_line(char **line, t_map *map, int y)
 		error(E_MAP);
 }
 
-int			parse_input(int fd, t_map *map)
+int				parse_input(int fd, t_map *map)
 {
 	char	*line;
 	int		res;
@@ -100,5 +99,6 @@ int			parse_input(int fd, t_map *map)
 	else
 		a = WIDTH / (2 * a);
 	set_coords_by_center(map->s_c, map, a);
+	print_c(map, map->s_c);
 	return (res);
 }

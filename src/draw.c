@@ -6,16 +6,16 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 21:17:24 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 21:27:04 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 22:40:39 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		iso(t_coords *s, t_coords *c , t_coords *i)
+void	iso(t_coords *s, t_coords *c, t_coords *i)
 {
-	int		prev_x;
-	int		prev_y;
+	int	prev_x;
+	int	prev_y;
 
 	prev_x = s->x;
 	prev_y = s->y;
@@ -23,7 +23,7 @@ void		iso(t_coords *s, t_coords *c , t_coords *i)
 	i->y = (s->z) + (prev_x + prev_y) * (-sin(0.523599));
 }
 
-void		for_each(t_map *len
+void	for_each(t_map *len
 				, void (*f)(t_coords *s, t_coords *c, t_coords *i))
 {
 	int	i;
@@ -53,7 +53,7 @@ void	draw_pic(t_fdf *fdf)
 		{
 			if (j + 1 != fdf->map->width)
 				draw_line(arr[i][j], arr[i][j + 1], fdf);
-			if (i + 1!= fdf->map->height)
+			if (i + 1 != fdf->map->height)
 				draw_line(arr[i][j], arr[i + 1][j], fdf);
 		}
 	}
@@ -74,6 +74,7 @@ void	set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i)
 
 void	draw(t_fdf *fdf)
 {
+	for_each(fdf->map, iso);
 	if (fdf->map->camera == CAM_ISO)
 		for_each(fdf->map, set_coords_in_screen_by_iso);
 	else if (fdf->map->camera == CAM_CONIC)
