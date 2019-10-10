@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:48:12 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 22:27:04 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:28:12 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ int		key_press(int key, void *param)
 	fdf = (t_fdf *)param;
 	if (key == K_ESC)
 		exit(0);
-	// else if (key == K_PLUS)
-		// umnozh(fdf);
+	else if (key == K_PLUS)
+		zoom_in(fdf);
+	else if (key == K_MINUS)
+		zoom_out(fdf);
+	else if (key == K_I)
+		fdf->map->camera = CAM_ISO;
+	draw(fdf);
 	return (0);
 }
 

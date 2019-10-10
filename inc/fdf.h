@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 19:31:15 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:22:05 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <errno.h>
 # include <stdio.h>
 
+# define CAM_ISO 1
+# define CAM_CONIC 2
 # define WIDTH	1000
 # define HEIGHT	1000
 
@@ -41,8 +43,10 @@ typedef struct	s_map
 {
 	t_coords	**s_c;
 	t_coords	**c_c;
+	t_coords	**iso_c;
 	int			width;
 	int			height;
+	int			camera;
 }				t_map;
 
 typedef struct	s_fdf
@@ -67,9 +71,18 @@ void			coords_init(t_map *map);
 
 void			draw_line(t_coords s, t_coords f, t_fdf *fdf);
 void			draw(t_fdf *fdf);
+void			draw_pic(t_fdf *fdf);
 
 int				parse_input(int fd, t_map *map);
 void			error(char *str);
+
+void			for_each(t_map *len
+					, void (*f)(t_coords *s, t_coords *c, t_coords *i));
+void			set_coords_in_screen_by_iso(t_coords *s, t_coords *c, t_coords *i);
+void			set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i);
+void			zoom_in(t_fdf *fdf);
+void			zoom_out(t_fdf *fdf);
+void			iso(t_coords *s, t_coords *c , t_coords *i);
 
 /*
 **	KEYBOARD & MOUSE

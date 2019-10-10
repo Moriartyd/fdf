@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 19:17:43 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:58:31 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	parse_line(char **line, t_map *map, int y)
 	i = -1;
 	map->s_c[y] = new_row(line, map);
 	map->c_c[y] = new_row(line, map);
+	map->iso_c[y] = new_row(line, map);
 	while (line[++i])
 	{
 		map->s_c[y][i].z = ft_atoi(line[i]);

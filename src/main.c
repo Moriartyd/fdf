@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:03 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 17:40:33 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:13:17 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_rows(char **av)
 	return (rows);
 }
 
-void	print_c(t_map *map)
+void	print_c(t_map *map, t_coords **arr)
 {
 	int	i;
 	int	j;
@@ -48,7 +48,7 @@ void	print_c(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			ft_printf("(%.1f;%.1f) ", map->c_c[i][j].x, map->c_c[i][j].y);
+			ft_printf("(%.1f;%.1f) ", arr[i][j].x, arr[i][j].y);
 			j++;
 		}
 		ft_putstr("\n");
@@ -74,7 +74,6 @@ int	main(int ac, char **av)
 		fdf = init_fdf(map);
 		hook_init(fdf);
 		draw(fdf);
-		// ft_printf("%d", fdf->endian);
 		mlx_loop(fdf->mlx);
 	}
 	else
