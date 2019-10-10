@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 22:42:57 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 01:06:22 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int				parse_input(int fd, t_map *map)
 	int		res;
 	char	**coords_line;
 	int		i;
-	double	a;
+	int		a;
 
 	i = -1;
 	while ((res = ft_gnl(fd, &line)) == 1)
@@ -99,6 +99,6 @@ int				parse_input(int fd, t_map *map)
 	else
 		a = WIDTH / (2 * a);
 	set_coords_by_center(map->s_c, map, a);
-	print_c(map, map->s_c);
+	// print_c(map, map->s_c);
 	return (res);
 }

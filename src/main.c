@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:03 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 22:42:19 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 01:04:09 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ void	print_c(t_map *map, t_coords **arr)
 	int	j;
 
 	i = 0;
-	ft_putstr("\n");
+	fprintf(1, "\n");
 	while (i < map->height)
 	{
 		j = 0;
 		while (j < map->width)
 		{
-			ft_printf("(%.1f;%.1f) ", arr[i][j].x, arr[i][j].y);
+			fprintf(stdout, "(%.0f;%.0f;%2.f) ", arr[i][j].x, arr[i][j].y, arr[i][j].z);
 			j++;
 		}
-		ft_putstr("\n");
+		fprintf(1, "\n");
 		i++;
 	}
 }

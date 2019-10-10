@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:06 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 22:41:04 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 00:51:21 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 	}
 }
 
-static int	check_it(t_point sign, t_point cur, t_coords fin)
+static int	check_it(t_point sign, t_coords cur, t_coords fin)
 {
 	if (sign.x > 0 && sign.y > 0)
 		return ((int)cur.x < (int)fin.x || (int)cur.y < (int)fin.y);
@@ -45,17 +45,16 @@ void		draw_line(t_coords s, t_coords f, t_fdf *fdf)
 {
 	t_point		delta;
 	t_point		sign;
-	t_point		cur;
+	t_coords	cur;
 	int			deltae;
 	int			error;
 
-	delta.x = ft_abs(s.x - f.x);
-	delta.y = ft_abs(s.y - f.y);
+	delta.x = ft_abs((int)s.x - (int)f.x);
+	delta.y = ft_abs((int)s.y - (int)f.y);
 	sign.x = s.x < f.x ? 1 : -1;
 	sign.y = s.y < f.y ? 1 : -1;
 	deltae = delta.x - delta.y;
-	cur.x = s.x;
-	cur.y = s.y;
+	cur = s;
 	while (check_it(sign, cur, f))
 	{
 		put_pixel(fdf, (int)cur.x, (int)cur.y, C_WHITE);

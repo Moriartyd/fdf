@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/10 21:22:05 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 00:55:33 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,8 @@ void			iso(t_coords *s, t_coords *c , t_coords *i);
 void			hook_init(t_fdf *fdf);
 int				key_press(int key, void *param);
 int				close_fdf(void *param);
+
+
+void	print_c(t_map *map, t_coords **arr);
 
 #endif
