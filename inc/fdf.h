@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 23:48:03 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:31:15 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "libft.h"
 # include <errno.h>
 # include <stdio.h>
+
+# define WIDTH	1000
+# define HEIGHT	1000
 
 typedef struct	s_point
 {
@@ -47,6 +50,10 @@ typedef struct	s_fdf
 	void		*mlx;
 	void		*win;
 	void		*img;
+	char		*data_addr;
+	int			bpp;
+	int			size_line;
+	int			endian;
 	t_map		*map;
 }				t_fdf;
 

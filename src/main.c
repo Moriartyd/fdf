@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:03 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 23:39:35 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 17:40:33 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	main(int ac, char **av)
 		fdf = init_fdf(map);
 		hook_init(fdf);
 		draw(fdf);
+		// ft_printf("%d", fdf->endian);
 		mlx_loop(fdf->mlx);
 	}
 	else

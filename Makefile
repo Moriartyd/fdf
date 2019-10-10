@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 16:09:49 by cpollich          #+#    #+#              #
-#    Updated: 2019/10/09 23:51:14 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/10 19:36:36 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,5 +54,7 @@ clean:
 	@rm -Rf $(OBJ_DIR)
 
 fclean: clean
-	@#make -C $(LIBFT_DIR) fclean
+	@make -C $(LIBFT_DIR) fclean
 	@rm -f $(NAME)
+
+re:	fclean test

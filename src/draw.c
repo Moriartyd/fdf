@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 21:17:24 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 23:39:16 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:30:01 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void		iso(t_coords *s, t_coords *c)
 
 	prev_x = s->x;
 	prev_y = s->y;
-	s->x = (prev_x - prev_y) * cos(0.523599);
-	s->y = -(s->z) + (prev_x + prev_y) * sin(0.523599);
+	s->x = (prev_x - prev_y) * (-cos(0.523599));
+	s->y = (s->z) + (prev_x + prev_y) * (-sin(0.523599));
 }
 
 void		for_each(t_map *len
@@ -57,6 +57,7 @@ static void	draw_pic(t_fdf *fdf)
 				draw_line(arr[i][j], arr[i + 1][j], fdf);
 		}
 	}
+	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 }
 
 void	multi(t_coords *s, t_coords *c)
@@ -67,16 +68,18 @@ void	multi(t_coords *s, t_coords *c)
 
 void	set_coords_in_screen(t_coords *s, t_coords *c)
 {
-	c->x = 640 - s->x;
-	c->y = 320 - s->y;
+	c->x = WIDTH / 2 - s->x;
+	c->y = HEIGHT / 2 - s->y;
 }
 
 void	draw(t_fdf *fdf)
 {
-	// draw_pic(fdf);
 	for_each(fdf->map, iso);
-	print_c(fdf->map);
 	for_each(fdf->map, set_coords_in_screen);
-	print_c(fdf->map);
+	draw_pic(fdf);
+	ft_bzero(fdf->data_addr, WIDTH * HEIGHT * sizeof(long int));
+	// for_each(fdf->map, multi);
+	// for_each(fdf->map, set_coords_in_screen);
+	// mlx_clear_window(fdf->mlx, fdf->win);
 	draw_pic(fdf);
 }

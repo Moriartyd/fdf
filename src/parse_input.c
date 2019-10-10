@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/09 23:21:42 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/10 19:17:43 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	set_coords_by_center(t_coords **map, t_map *len, double a)
 		{
 			map[i][j].x = -(midj - j) * a;
 			map[i][j].y = -(midi - i) * a;
+			map[i][j].z *= a;
 		}
 	}
 }
@@ -94,9 +95,9 @@ int			parse_input(int fd, t_map *map)
 	}
 	a = map->height > map->width ? map->height : map->width;
 	if (map->height >= map->width)
-		a = 720 / (2 * a);
+		a = HEIGHT / (2 * a);
 	else
-		a = 1280 / (2 * a);
+		a = WIDTH / (2 * a);
 	set_coords_by_center(map->s_c, map, a);
 	return (res);
 }
