@@ -6,12 +6,13 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 17:07:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 02:43:31 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 03:12:41 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "errors.h"
+#include "colors.h"
 
 t_fdf	*init_fdf(t_map *map)
 {
@@ -40,7 +41,8 @@ t_map	*init_map(void)
 	res->c_c = NULL;
 	res->height = 0;
 	res->width = 0;
-	res->camera = CAM_CONIC;
+	res->camera = CAM_PARALLEL;
+	res->color = C_WHITE;
 	return (res);
 }
 

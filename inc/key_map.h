@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:11 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 01:27:38 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 03:15:14 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define K_D			2
 # define K_L			37
 # define K_R			15
+# define K_G			5
+# define K_B			11
+# define K_W			13
 
 
 # define K_BOL			43

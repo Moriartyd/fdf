@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 02:46:11 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 03:13:51 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdio.h>
 
 # define CAM_ISO 1
-# define CAM_CONIC 2
+# define CAM_PARALLEL 2
 # define WIDTH	1000
 # define HEIGHT	1000
 
@@ -49,6 +49,7 @@ typedef struct	s_map
 	int			camera;
 	int			updown;
 	int			lr;
+	int			color;
 }				t_map;
 
 typedef struct	s_fdf

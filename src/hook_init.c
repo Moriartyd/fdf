@@ -6,13 +6,25 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:48:12 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 02:50:39 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 03:17:19 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "key_map.h"
 #include "fdf.h"
+#include "colors.h"
 
+void	color_control(t_fdf *fdf, int key)
+{
+	if (key == K_R)
+		fdf->map->color = C_RED;
+	if (key == K_G)
+		fdf->map->color = C_GREEN;
+	if (key == K_B)
+		fdf->map->color = C_BLUE;
+	if (key == K_W)
+		fdf->map->color = C_WHITE;
+}
 
 int		key_press(int key, void *param)
 {
@@ -29,11 +41,13 @@ int		key_press(int key, void *param)
 	else if (key == K_I)
 		fdf->map->camera = CAM_ISO;
 	else if (key == K_P)
-		fdf->map->camera = CAM_CONIC;
+		fdf->map->camera = CAM_PARALLEL;
 	else if (key == K_BOL || key == K_MEN)
 		z_control(fdf, key);
 	else if (key >= K_ARROW_LEFT && key <= K_ARROW_RIGHT)
 		arrow_control(fdf, key);
+	else if (key == K_R || key == K_G || key == K_B || key == K_W)
+		color_control(fdf, key);
 	draw(fdf);
 	return (0);
 }

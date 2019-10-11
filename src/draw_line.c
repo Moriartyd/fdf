@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:10:06 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 00:51:21 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 03:10:32 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		draw_line(t_coords s, t_coords f, t_fdf *fdf)
 	cur = s;
 	while (check_it(sign, cur, f))
 	{
-		put_pixel(fdf, (int)cur.x, (int)cur.y, C_WHITE);
+		put_pixel(fdf, (int)cur.x, (int)cur.y, fdf->map->color);
 		if ((error = deltae * 2) > -delta.y)
 		{
 			deltae -= delta.y;

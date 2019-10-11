@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 21:17:24 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 02:48:19 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/11 03:09:07 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	iso(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 
 	prev_x = s->x;
 	prev_y = s->y;
+	(void)c;
+	(void)map;
 	i->x = (prev_x - prev_y) * (-cos(0.523599));
 	i->y = (s->z) + (prev_x + prev_y) * (-sin(0.523599));
 }
@@ -63,12 +65,14 @@ void	draw_pic(t_fdf *fdf)
 
 void	set_coords_in_screen_by_iso(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 {
+	(void)s;
 	c->x = (WIDTH / 2 - i->x) + map->lr;
 	c->y = (HEIGHT / 2 - i->y) + map->updown;
 }
 
 void	set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 {
+	(void)i;
 	c->x = (WIDTH / 2 - s->x) + map->lr;
 	c->y = (HEIGHT / 2 - s->y) + map->updown;
 }
@@ -78,7 +82,7 @@ void	draw(t_fdf *fdf)
 	for_each(fdf->map, iso);
 	if (fdf->map->camera == CAM_ISO)
 		for_each(fdf->map, set_coords_in_screen_by_iso);
-	else if (fdf->map->camera == CAM_CONIC)
+	else if (fdf->map->camera == CAM_PARALLEL)
 		for_each(fdf->map, set_coords_in_screen_by_conic);
 	draw_pic(fdf);
 }
