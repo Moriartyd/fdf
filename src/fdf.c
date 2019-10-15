@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 17:07:25 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 03:12:41 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/15 20:13:16 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ t_map	*init_map(void)
 	res->c_c = NULL;
 	res->height = 0;
 	res->width = 0;
+	res->lr = 0;
+	res->updown = 0;
+	res->color = 0;
 	res->camera = CAM_PARALLEL;
-	res->color = C_WHITE;
 	return (res);
 }
 

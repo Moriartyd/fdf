@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:09:55 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 03:13:51 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/15 20:43:14 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct	s_fdf
 	int			bpp;
 	int			size_line;
 	int			endian;
+	int			color;
 	t_map		*map;
 }				t_fdf;
 
@@ -80,12 +81,15 @@ int				parse_input(int fd, t_map *map);
 void			error(char *str);
 
 void			for_each(t_map *len
-					, void (*f)(t_coords *s, t_coords *c, t_coords *i, t_map *map));
-void			set_coords_in_screen_by_iso(t_coords *s, t_coords *c, t_coords *i, t_map *map);
-void			set_coords_in_screen_by_conic(t_coords *s, t_coords *c, t_coords *i, t_map *map);
+					, void (*f)(t_coords *s, t_coords *c,
+							t_coords *i, t_map *map));
+void			set_coords_in_screen_by_iso(t_coords *s,
+					t_coords *c, t_coords *i, t_map *map);
+void			set_coords_in_screen_by_conic(t_coords *s,
+					t_coords *c, t_coords *i, t_map *map);
 void			zoom_in(t_fdf *fdf);
 void			zoom_out(t_fdf *fdf);
-void			iso(t_coords *s, t_coords *c , t_coords *i, t_map *map);
+void			iso(t_coords *s, t_coords *c, t_coords *i, t_map *map);
 
 /*
 **	KEYBOARD & MOUSE
@@ -99,5 +103,8 @@ void			arrow_control(t_fdf *fdf, int key);
 void			z_control(t_fdf *fdf, int key);
 
 void			print_c(t_map *map, t_coords **arr);
+
+int				get_color(t_coords current, t_coords start,
+						t_coords end, t_point delta);
 
 #endif

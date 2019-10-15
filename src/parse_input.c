@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/11 03:07:56 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/15 19:45:02 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void		set_coords_by_center(t_coords **map, t_map *len)
 		j = -1;
 		while (++j < len->width)
 		{
-			map[i][j].x = -(midj - j);
-			map[i][j].y = -(midi - i);
+			map[i][j].x = (midj - j);
+			map[i][j].y = (midi - i);
 		}
 	}
 }
@@ -61,7 +61,10 @@ static void		parse_line(char **line, t_map *map, int y)
 	map->iso_c[y] = new_row(line, map);
 	while (line[++i])
 	{
-		map->s_c[y][i].z = ft_atoi(line[i]);
+		if ((map->s_c[y][i].z = ft_atoi(line[i])))
+			map->s_c[y][i].color = C_RED;
+		else
+			map->s_c[y][i].color = C_BLUE;
 		map->s_c[y][i].y = y;
 		map->s_c[y][i].x = i;
 		if (!map->s_c[y][i].z && *line[i] != '0')
