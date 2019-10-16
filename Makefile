@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 16:09:49 by cpollich          #+#    #+#              #
-#    Updated: 2019/10/15 20:45:38 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/16 15:36:09 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ fclean: clean
 	@make -C $(LIBFT_DIR) fclean
 	@rm -f $(NAME)
 
-re:	fclean test
+re:	fclean all
 
 norme:
 	@norminette $(LIBFT_DIR) $(INC_DIR) $(SRC_DIR)
