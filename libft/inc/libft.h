@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:20:52 by cpollich          #+#    #+#             */
-/*   Updated: 2019/09/30 20:25:38 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/22 18:46:42 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int					ft_strnchr(const char *s, char ch, int n);
 char				*ft_strjoinch(char **str, char c);
 int					ft_doublematrixdel(int ***matrix, int size);
 char				*ft_stradd(char *s1, char *s2);
-
+int					ft_atoi_fdf(const char *s);
 int					ft_printf(const char *form, ...);
 char				*ft_copyuntil(char *str, int c);
 int					ft_isdigit(int c);

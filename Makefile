@@ -6,7 +6,7 @@
 #    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 16:09:49 by cpollich          #+#    #+#              #
-#    Updated: 2019/10/16 15:36:09 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/22 18:00:23 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)
-	gcc -c $F $< $(INCLUDES) -o $@
+	gcc -c -g $F $< $(INCLUDES) -o $@
 
 $(MLX):
 	@make -C $(MLX_DIR)

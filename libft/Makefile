@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cpollich <cpollich@student.21-school.ru    +#+  +:+       +#+         #
+#    By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 14:33:12 by cpollich          #+#    #+#              #
-#    Updated: 2019/09/29 18:39:39 by cpollich         ###   ########.fr        #
+#    Updated: 2019/10/22 18:46:51 by cpollich         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ SRC		=	ft_memset.c ft_bzero.c			\
 			ft_stradd.c ft_chjoinstr.c		\
 			ft_itoa_base.c ft_itoa_ubase.c	\
 			ft_nchjoinstr.c ft_putstr_until.c\
-			ft_strjoin_leak.c ft_ltoa_base.c
+			ft_strjoin_leak.c ft_ltoa_base.c\
+			ft_atoi_fdf.c
 
 OBJS	=	$(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 

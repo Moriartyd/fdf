@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 01:09:53 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/16 15:21:38 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/22 17:35:03 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	z_bol(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 	(void)c;
 	(void)i;
 	(void)map;
-	s->z += s->z > 0 ? (0.1 * s->z) : (- 0.1 * s->z);
+	s->z += s->z > 0 ? (0.1 * s->z) : (-0.1 * s->z);
 }
 
 static void	z_men(t_coords *s, t_coords *c, t_coords *i, t_map *map)
@@ -26,7 +26,7 @@ static void	z_men(t_coords *s, t_coords *c, t_coords *i, t_map *map)
 	(void)c;
 	(void)i;
 	(void)map;
-	s->z += s->z > 0 ? (- 0.1 * s->z) : (0.1 * s->z);
+	s->z += s->z > 0 ? (-0.1 * s->z) : (0.1 * s->z);
 }
 
 void		z_control(t_fdf *fdf, int key)

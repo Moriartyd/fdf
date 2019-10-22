@@ -5,6 +5,7 @@
         "fdf.h": "c",
         "colors.h": "c",
         "key_map.h": "c",
-        "HELPER.C": "cpp"
+        "HELPER.C": "cpp",
+        "libft.h": "c"
     }
 }
