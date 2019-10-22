@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 11:19:21 by moriarty          #+#    #+#             */
-/*   Updated: 2019/10/22 19:04:05 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/22 20:48:29 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,7 @@ static t_list	*t_list_create_file(int fd)
 	res = (t_list *)malloc(sizeof(t_list));
 	if (!res)
 		return (NULL);
-	res->content = ft_strnew(0);
-	if (!res->content)
-	{
-		free(res);
-		return (NULL);
-	}
+	res->content = NULL;
 	res->content_size = fd;
 	res->next = NULL;
 	return (res);
@@ -142,7 +137,7 @@ int				ft_gnl(const int fd, char **line)
 		(file->content && (char **)&file->content[0]))
 	{
 		buf[len] = '\0';
-		t = ft_strjoin(file->content, buf);
+		t = (file->content) ? ft_strjoin(file->content, buf) : ft_strdup(buf);
 		if ((t && ft_strchr(t, '\n')) || len <= 0)
 			return (fillin_line(line, t, file, &start));
 		free(file->content);
