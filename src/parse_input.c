@@ -6,7 +6,7 @@
 /*   By: cpollich <cpollich@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 16:15:47 by cpollich          #+#    #+#             */
-/*   Updated: 2019/10/22 19:01:41 by cpollich         ###   ########.fr       */
+/*   Updated: 2019/10/22 21:39:41 by cpollich         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,6 @@ static void		parse_line(char **line, t_map *map, int y)
 	while (line[++i])
 	{
 		parse_color(map, y, i, line[i]);
-		// if ((map->s_c[y][i].z = ft_atoi(line[i])))
-		// 	map->s_c[y][i].color = C_RED;
-		// else
-		// 	map->s_c[y][i].color = C_BLUE;
 		map->s_c[y][i].y = y;
 		map->s_c[y][i].x = i;
 		if (!map->s_c[y][i].z && *line[i] != '0')
